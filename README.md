@@ -27,27 +27,15 @@ Cleaning Employee
 
 Η κληρονομικότητα είναι η εξής:
 
-                            Object(πατέρας,όλα είναι παιδιά του)
-                              |
-                              |
-                            Plane(πατέρας όλων των υπολοίπων)
-                              |
-                              |
-                            PlaneCompartment
-                            /			\
-                          /					\
-			PassengerCompartment					PrivateCompartment
-                                      /					\
-                                    /							\	
-                    EquipmentCompartment				  CargoBay
+Object(πατέρας,όλα είναι παιδιά του)
+	Plane(πατέρας όλων των υπολοίπων)
+		PlaneCompartment
+			PassengerCompartment - PrivateCompartment	
+						EquipmentCompartment - CargoBay
 
 
-
-							Employee
-							/	|	\
-						/		|		\
-					/			|			\
-			Security		Maintenance	Cleaning
+Employee
+Security-Maintenance-Cleaning
 
 
 Η κλάση Object περιέχει τα εξής:
