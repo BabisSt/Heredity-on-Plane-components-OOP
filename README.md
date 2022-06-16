@@ -11,31 +11,31 @@ classes.cpp	//οι υλοποιήσεις
 Μεταγλώτηση μέσω g++ -c classes.cpp
 
 
-Σε αυτά τα αρχεία υπάρχουν οι εξής κλάσεις:
-Object
-String
-Plane
-Plane Compartment
-Passenger Compartment
-Private Compartment
-Equipment Compartment
-Cargo Bay
-Employee
-Security Employee
-Maintenance Employee
-Cleaning Employee
+Σε αυτά τα αρχεία υπάρχουν οι εξής κλάσεις:<br/>
+Object<br/>
+String<br/>
+Plane<br/>
+Plane Compartment<br/>
+Passenger Compartment<br/>
+Private Compartment<br/>
+Equipment Compartment<br/>
+Cargo Bay<br/>
+Employee<br/>
+Security Employee<br/>
+Maintenance Employee<br/>
+Cleaning Employee<br/>
 
-Η κληρονομικότητα είναι η εξής:
+Η κληρονομικότητα είναι η εξής:<br/>
 
-Object(πατέρας,όλα είναι παιδιά του)
-	Plane(πατέρας όλων των υπολοίπων)
-		PlaneCompartment
-			PassengerCompartment - PrivateCompartment	
-						EquipmentCompartment - CargoBay
+Object(πατέρας,όλα είναι παιδιά του)<br/>
+	Plane(πατέρας όλων των υπολοίπων)<br/>
+		PlaneCompartment<br/>
+			PassengerCompartment - PrivateCompartment<br/>	
+						EquipmentCompartment - CargoBay<br/><br/>
 
 
-Employee
-Security-Maintenance-Cleaning
+Employee<br/>
+Security-Maintenance-Cleaning<br/>
 
 
 Η κλάση Object περιέχει τα εξής:
