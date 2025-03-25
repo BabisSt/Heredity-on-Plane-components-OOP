@@ -1,129 +1,108 @@
-# Heredity on Plane components OOP
+# Heredity on Plane Components OOP
+
+## Exercise 3: Object-Oriented Programming
+Student ID: 1115201600278  
+Stevis Charalampos-Antonius
+
+### Files Included:
+- `classes.h` // Header files
+- `classes.cpp` // Implementation files  
+Compilation via `g++ -c classes.cpp`
+
+### Classes in the Files:
+- `Object`
+- `String`
+- `Plane`
+- `Plane Compartment`
+- `Passenger Compartment`
+- `Private Compartment`
+- `Equipment Compartment`
+- `Cargo Bay`
+- `Employee`
+- `Security Employee`
+- `Maintenance Employee`
+- `Cleaning Employee`
+
+### Inheritance Structure:
+Object (parent, all others are its children)  
+    Plane (parent of all the below)  
+        PlaneCompartment  
+            PassengerCompartment - PrivateCompartment  
+                    EquipmentCompartment - CargoBay  
+
+Employee  
+    SecurityEmployee - MaintenanceEmployee - CleaningEmployee
 
 
-ΑΣΚΗΣΗ 3η ΑΝΤΙΚΕΙΜΕΝΟΣΤΡΑΦΗΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ
-ΑΜ: 1115201600278
-Στεβής Χαράλαμπος-Αντώνιος
 
-Τα αρχεία που περιέχονται στον φάκελο είναι τα εξής:
-classes.h		//οι επικεφαλίδες
-classes.cpp	//οι υλοποιήσεις
-Μεταγλώτηση μέσω g++ -c classes.cpp
+### Class Descriptions:
 
+#### `Object` Class
+- **Private:** `id`
+- **Constructor:** Default constructor
+- **Constructor with `id` argument**
+- **Copy Constructor**
+- **Virtual Destructor**
+- **Virtual `is_equal`** (compares two objects and prints if they are the same or not)
+- **Virtual `is_identical`** (compares one object with the `id` and prints the appropriate message)
+- **Pure Virtual `toString`** (takes a `char*` and an `int` as arguments)
+- **`get_id`** (returns the `id`)
 
-Σε αυτά τα αρχεία υπάρχουν οι εξής κλάσεις:<br/>
-Object<br/>
-String<br/>
-Plane<br/>
-Plane Compartment<br/>
-Passenger Compartment<br/>
-Private Compartment<br/>
-Equipment Compartment<br/>
-Cargo Bay<br/>
-Employee<br/>
-Security Employee<br/>
-Maintenance Employee<br/>
-Cleaning Employee<br/>
+#### `String` Class
+- **Private:** `char* str / int length`
+- **Constructor with `str` argument**
+- **Copy Constructor** (with `String` argument)
+- **Virtual Destructor**
+- **`clear`** (deletes a `char*` based on the argument)
+- **`print_str`** (prints a `char*` argument)
+- **`get_length`** (returns the size of the string using `strlen`)
+- **`concat`** (concatenates three `char*`, with two to concatenate and one for the result using `strcpy` and `strcat`)
+- **`at`** (returns the `char` at a specific index in a `char*`)
+- **`updateAt`** (updates the `char*` at a specific index with a new `char`)
+- **`toString`** (prints the `char*` and its length)
 
-Η κληρονομικότητα είναι η εξής:<br/>
+#### `Plane` Class
+- **Private:** `char* description`, `char* title`, `int capacity`, `CargoBay*`, `EquipmentCompartment*`, `PassengerCompartment*`
+- **Constructor**
+- **Constructor with arguments** (including spaces for the plane)
+- **Copy Constructor**
+- **Virtual Destructor**
+- **`set_capacity_of_plane`** (sets capacity and creates random passenger compartments based on the capacity)
+- **`set_description`** (sets a `char*` description)
+- **`set_title`** (sets a `char*` title)
+- **`get_description`**
+- **`get_title`**
+- **`get_capacity_of_plane`**
 
-Object(πατέρας,όλα είναι παιδιά του)<br/>
-	Plane(πατέρας όλων των υπολοίπων)<br/>
-		PlaneCompartment<br/>
-			PassengerCompartment - PrivateCompartment<br/>	
-						EquipmentCompartment - CargoBay<br/><br/>
+#### `PlaneCompartment` Class
+- **Constructor**
+- **Virtual Destructor**
+- **Pure Virtual `process`** (with three arguments, one for each type of employee)
+- **Pure Virtual `ready_check`** (takes three `int` arguments)
 
+#### `PassengerCompartment`, `PrivateCompartment`, `EquipmentCompartment`, and `CargoBay` Classes
+- **Constructor** (in `PassengerCompartment`, there is an option to create an internal passenger compartment randomly; in `CargoBay`, there is an `EquipmentCompartment`)
+- **Virtual Destructor**
+- **Virtual `ready_check`** (takes two or three `int` arguments, checks if all results from `process` are valid and prints if the compartment is ready or not)
+- **Virtual `process`** (takes two or three arguments, with the respective employee passed in, uses `rand()` to determine if the employee has completed the task, calls the `report` method of the employee)
 
-Employee<br/>
-Security-Maintenance-Cleaning<br/>
+#### `Employee` Class
+- **Private:** `char* name`
+- **Constructor**
+- **Constructor with `char*` argument**
+- **Virtual Destructor**
+- **Virtual `report`** (takes an `int` argument)
+- **Virtual `workOn`** (not implemented)
+- **`set_name`** (sets the `name` for the employee)
+- **`get_name`** (returns the `name`)
 
+#### `SecurityEmployee`, `MaintenanceEmployee`, and `CleaningEmployee` Classes
+- **Constructor** (with `char*` argument)
+- **Virtual Destructor**
+- **Virtual `report`** (takes an `int` argument, prints if the compartment is fine when the argument is 1, otherwise prints a negative message)
+- **Virtual `workOn`** (not implemented)
 
-Η κλάση Object περιέχει τα εξής:
-	private: id	
-	
-	Constructor
-	Constructor με όρισμα id
-	Copy Constructor
-	virtual Destructor
-
-	virtual is_equal ( όρισμα δύο objects και τα συγκρίνει αν είναι ίδια ή οχι,εκτυπώνει το ανάλογο μήνυμα)
-	virtual is_identical( όρισμα ένα object και το συγκρίνει με το id,εκτυπώνει το ανάλογο μήνυμα)
-	pure virtual toString(όρισμα ενα char* και ένα int)
-	int get_id (επιστρέφει το id)
-
-Η κλάση String περιέχει τα εξής:
-private: char* str / int length
-
-	Constructor με όρισμα str
-	Copy Constructor όρισμα String
-	virtual Destructor
-
-	void clear(με όρισμα ένα char* και το διαγράφει)
-	void print_str(με όρισμα ένα char* και το εκτυπώνει)
-	int get_lenght(με όρισμα ένα char* και εκτυπώνει το μέγεθος μέσω strlen)
-	char* concat(με ορίσματα τρία char*, τα δύο που θέλουμε να ενώσουμε και ακόμα ένα που θα είναι το αποτέλεσμα,γίνεται μέσω strcpy και strcat)
-	char at(με ορίσματα ένα char και ένα int,γυρνάει το στοιχείο του char* στο σημείο του int)
-	char* updateAt(ορίσματα char*,int,char,βάζει στο char* στο σημείο του int 
-το στοιχείο char)
-	void toString(ορίσματα char*,int, εκτυπώνει το char* και το length του string σε μορφή char)
-
-
-Η κλάση Plane περιέχει τα εξής:
-private:	char* description,title
-			int capacity
-			CargoBay*
-			EquipmentCompartment*
-			PassengerCompartment*
-
-	Constructor
-	Constructor με ορίσματα(συν οι χώροι του αεροπλάνου)
-	Copy Constructor
-	virtual Destructor
-
-	void set_capacity_of_plane(όρισμα ένα int και ανάλογα δημιουργεί passengerc compartments τυχαία ανάλογα την χωριτηκότητα)
-	void set_description(όρισμα ένα char*)
-	void set_title(όρισμα ενα char*)
-	char* get_description
-	char* get_title
-	char* get_capacity_of_plane
-
-
-Η κλάση PlaneCompartment περιέχει τα εξής:
-
-	Constructor
-	virtual Destructor
-	pure virtual process(3, μια για κάθε τύπο employee)
-	pure virtual ready_check(ορίσματα 3 int)
-
-Οι κλάσεις PassengerCompartment,PrivateCompartment,EquipmentCompartment και CargoBay περιέχουν τα εξής:
-
-	Constructor(στο Passenger υπάρχει δυνατότητα δημιουργίας εσωτερικού passengercompartment με τυχαίο τρόπο,στον Cargobay υπάρχει ένα equipment compartment)
-	virtual Destructor
-	
-	virtual ready_check(με ορίσματα από δύο μέχρι τρεις int,δέχεται τα αποτελέσματα από τις process και αν είναι όλα άσσοι εκτυπώνει οτι το compartment είναι έτοιμο, αντιθέτως εκτυπώνει ότι δεν είναι έτοιμο)
-	virtual process(από δύο μέχρι τρεις,με όρισμα τον ανάλογο τον employee,μέσω rand καθορίζει αν ο employee έκανε την δουλεία του, μέσα καλεί την report του employee)
-
-
-Η κλάση Employee περιέχει τα εξής:
-private: char* name
-
-	Constructor
-	Constructor με ορισμα char*
-	virtual Destructor
-	
-	virtual report(όρισμα ενα int)
-	virtual workOn
-	void set_name(όρισμα ενα char*)
-	char* get_name
-
-	Οι κλάσεις SecurityEmployee,MaintenanceEmployee και CleaningEmployee περιέχουν τα εξής:
-
-	Constructor με όρισμα char*
-	virtual Destructor
-
-	virtual report(όρισμα ενα int,δέχεται εναν αριθμό,αν είναι 1 εκτυπώνει το αναλόγο μήνυμα ότι το compartment είναι εντάξει,διαφοτερικά εκτυπώνει το αντοίστιχο αρνητικό μήνυμα)
-	virtual workOn(δεν είναι υλοποιημένη)
-
-Στην εργασία δεν υπάρχει main επειδή δεν πρόλαβα να την υλοποιήσω.
-Δεν υπάρχει η συνάρτη clone_encrypt_and_print
-Δεν υπάρχει η συνάρτη workOn των employee
+### Missing Implementations:
+- There is no `main` function as it was not implemented.
+- The `clone_encrypt_and_print` function is not included.
+- The `workOn` function for the `Employee` class is not implemented.
